@@ -11,7 +11,7 @@ import NotFound from './pages/NotFound/NotFound';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/Proyecto-Marvel'>
       <div className="App flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow pt-30 md:pt-10">
