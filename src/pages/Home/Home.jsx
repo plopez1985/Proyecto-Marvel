@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import { ROUTES } from '../../config/routes';
+import heroesImage from '../../assets/heroes.jpg';
+import villanosImage from '../../assets/villanos.webp';
 
 export default function Home() {
   const [hovered, setHovered] = useState(null);
@@ -27,7 +29,7 @@ export default function Home() {
           onClick={() => navigate(`${ROUTES.Personajes}?heroe=true`)}
           className="w-full md:w-1/2 flex-1 bg-cover bg-center relative flex justify-center items-center transition-all duration-300 cursor-pointer hover:brightness-90"
           style={{
-            backgroundImage: "url('/heroes.jpg')",
+            backgroundImage: `url(${heroesImage})`,
             clipPath: isMobile ? "none" : 'polygon(0 0, 100% 0, 85% 100%, 0 100%)',
             filter: hovered === 'villanos' ? 'blur(3px)' : 'none',
           }}
@@ -45,7 +47,7 @@ export default function Home() {
           onClick={() => navigate(`${ROUTES.Personajes}?heroe=false`)}
           className="w-full md:w-1/2 flex-1 bg-cover bg-center relative flex justify-center items-center transition-all duration-300 cursor-pointer hover:brightness-90"
           style={{
-            backgroundImage: "url('/villanos.webp')",
+            backgroundImage: `url(${villanosImage})`,
             clipPath: isMobile ? "none" : 'polygon(15% 0, 100% 0, 100% 100%, 0 100%)',
             filter: hovered === 'heroes' ? 'blur(3px)' : 'none',
           }}

@@ -12,23 +12,27 @@ export default function Favoritos() {
   const navigate = useNavigate(); 
 
   useEffect(() => {
-    // Obtener los IDs de favoritos guardados en localStorage
-    const favoritosGuardados = localStorage.getItem("favoritos");
-    const idsFavoritos = favoritosGuardados ? JSON.parse(favoritosGuardados) : [];
+    const obtenerFavoritos = async () => {
+      try {
+        // Obtener los IDs de favoritos guardados en localStorage
+        const favoritosGuardados = localStorage.getItem("favoritos");
+        const idsFavoritos = favoritosGuardados ? JSON.parse(favoritosGuardados) : [];
 
-    // .map para recorrer los IDs y obtener los personajes
-    const fetchPromises = idsFavoritos.map((id) => getPersonajeID(id));
+        // .map para recorrer los IDs y obtener los personajes
+        const fetchPromises = idsFavoritos.map((id) => getPersonajeID(id));
 
-    // promise.all para esperar a que todas las promesas terminen
-    Promise.all(fetchPromises)
-      .then((resultados) => {
+        // promise.all para esperar a que todas las promesas terminen
+        const resultados = await Promise.all(fetchPromises);
+        
         setFavoritos(resultados);
         setLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error al obtener los personajes favoritos:", error);
         setLoading(false);
-      });
+      }
+    };
+
+    obtenerFavoritos();
   }, []);
 
   if (loading) {

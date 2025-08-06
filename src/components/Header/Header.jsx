@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import Boton from "../Boton/Boton";
 import { Buscador } from "../Buscador/Buscador";
 import { ROUTES } from "../../config/routes";
+import Logo from "../../assets/Marvel-Comics-Logo.png"
 
 const Header = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Header = () => {
       <div className="flex items-center gap-4 md:gap-6">
         <Link to="/">
           <img
-            src="/Marvel-Comics-Logo.png"
+            src={Logo}
             alt="Marvel Logo"
             className="h-16 sm:h-20 md:h-24 w-auto object-contain max-w-[100px] sm:max-w-[140px] md:max-w-[180px]"
           />
