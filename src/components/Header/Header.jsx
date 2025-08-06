@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Boton from "../Boton/Boton";
 import { Buscador } from "../Buscador/Buscador";
-import { ROUTES } from "../../const/routes";
+import { ROUTES } from "../../config/routes";
 
 const Header = () => {
   const navigate = useNavigate();

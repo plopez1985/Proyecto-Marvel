@@ -6,7 +6,7 @@ import ListarPersonajes from "../../components/ListarPersonajes/ListarPersonajes
 import Fondo from "../../components/Fondo/Fondo"; 
 import Titulo from "../../components/Titulo/Titulo";  
 import Boton from "../../components/Boton/Boton";  
-import { ROUTES } from "../../const/routes";  
+import { ROUTES } from "../../config/routes";  
 
 const Personajes = () => {
   const location = useLocation();

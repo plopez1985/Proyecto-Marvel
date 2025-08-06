@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Titulo from "../../components/Titulo/Titulo";
 import Boton from "../../components/Boton/Boton";
 import Fondo from "../../components/Fondo/Fondo";
-import { ROUTES } from "../../const/routes";
+import { ROUTES } from "../../config/routes";
 
 const NotFound = () => {
   const navigate = useNavigate();

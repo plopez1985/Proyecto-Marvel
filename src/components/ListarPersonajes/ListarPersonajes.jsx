@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Boton from "../Boton/Boton"; 
-import { ROUTES } from "../../const/routes";
+import { ROUTES } from "../../config/routes";
 
 const ListarPersonajes = ({ personajes, centrado = false }) => {
   

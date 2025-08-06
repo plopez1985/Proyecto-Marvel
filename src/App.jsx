@@ -4,7 +4,7 @@ import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
 import Personajes from './pages/Personajes/Personajes'; 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'; 
-import { ROUTES } from './const/routes'; 
+import { ROUTES } from './config/routes'; 
 import { DetallePersonaje } from './pages/DetallePersonaje/DetallePersonaje';
 import Favoritos from './pages/Favoritos/Favoritos';
 import NotFound from './pages/NotFound/NotFound';

@@ -5,7 +5,7 @@ import Detalle from "../../components/Detalle/Detalle";
 import Fondo from "../../components/Fondo/Fondo";
 import Titulo from "../../components/Titulo/Titulo";  
 import Boton from "../../components/Boton/Boton";
-import { ROUTES } from "../../const/routes";
+import { ROUTES } from "../../config/routes";
 
 export function DetallePersonaje() {
   const location = useLocation(); // toma los datos de el state en el Link  
