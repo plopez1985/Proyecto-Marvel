@@ -6,20 +6,13 @@ import ListarPersonajes from "../../components/ListarPersonajes/ListarPersonajes
 import Fondo from "../../components/Fondo/Fondo"; 
 import Titulo from "../../components/Titulo/Titulo";  
 import Boton from "../../components/Boton/Boton";  
-import { useTranslation } from "react-i18next";
 import { ROUTES } from "../../const/routes";  
 
 const Personajes = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const parametrosURL = new URLSearchParams(location.search);  // Obtenemos los parámetros de búsqueda de la URL
-  const { t, i18n } = useTranslation();
  
-  useEffect(() => {
-    // Leer el idioma guardado en el localStorage (por defecto español)
-    const idiomaUsuario = localStorage.getItem("idioma") || "es";
-    i18n.changeLanguage(idiomaUsuario);
-  }, [i18n]);
   // Parmetro de búsqueda
   const busqueda = parametrosURL.get("busqueda");  
   
@@ -60,13 +53,13 @@ const Personajes = () => {
           setTieneMas(datosSiguiente.length > 0); // Si hay mas datos en la siguiente pagina "tieneMas" es true
         }
       } catch (error) {
-        console.error(t("loadingCharactersError"), error);
+        console.error("Error al cargar los personajes", error);
       } finally {
         setCargando(false);
       }
     }
     obtenerPersonajes();
-  }, [busqueda, esHeroe, paginaActual, navigate, t]);
+  }, [busqueda, esHeroe, paginaActual, navigate]);
 
   if (cargando) {
     return (
@@ -74,7 +67,7 @@ const Personajes = () => {
         <Fondo />
         <div className="relative z-10 container mx-auto p-4 md:p-8 flex flex-col items-center">
           <Titulo 
-            texto={t("loadingCharacters")} 
+            texto="Cargando personajes..." 
             clase="text-center text-xl md:text-2xl"
           />
           <img 
@@ -104,19 +97,19 @@ const Personajes = () => {
       <div className="relative z-10 container mx-auto p-4 md:p-8 mt-4 md:mt-10">
         <div className="flex justify-start w-full">
           <Boton 
-            text={t("back")} 
+            text="Volver" 
             onClick={() => navigate(-1)}
             clase="bg-gray-300 hover:bg-gray-400 text-gray-800 disabled:opacity-50"
           />
         </div>
         {busqueda ? (
           <Titulo
-            texto={`${t("searchResult")} ${busqueda}`}
+            texto={`Resultados de la busqueda: ${busqueda}`}
             clase="text-3xl md:text-4xl font-bold text-center mb-4 md:mb-8"
           />
         ) : (
           <Titulo
-            texto={esHeroe ? t("heroes") : t("villains")}
+            texto={esHeroe ? "Héroes" : "Villanos"}
             clase="inline-block text-3xl md:text-4xl font-bold px-2 py-1 rounded-md"
           />
         )}
@@ -130,13 +123,13 @@ const Personajes = () => {
             {!busqueda && (
               <div className="flex flex-col md:flex-row justify-center mt-4 md:mt-8 space-y-4 md:space-y-0 md:space-x-4">
                 <Boton 
-                  text={t("previous")}
+                  text="Anterior"
                   onClick={() => cambiarPagina(paginaActual - 1)}
                   disabled={paginaActual === 1}
                   clase="bg-gray-300 hover:bg-gray-400 text-gray-800 disabled:opacity-50"
                 />
                 <Boton 
-                  text={t("next")}
+                  text="Siguiente"
                   onClick={() => cambiarPagina(paginaActual + 1)}
                   disabled={!tieneMas}
                   clase="bg-gray-300 hover:bg-gray-400 text-gray-800 disabled:opacity-50"
@@ -147,7 +140,7 @@ const Personajes = () => {
         ) : (
           <div className="flex flex-col items-center">
             <Titulo
-              texto={t("notFoundCharacter")}
+              texto="No se encontró el personaje."
               clase="text-2xl md:text-3xl text-center mt-4 md:mt-8"
             />
             <div

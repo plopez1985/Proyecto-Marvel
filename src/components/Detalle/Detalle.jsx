@@ -1,16 +1,14 @@
 import React from "react";
 import Boton from "../Boton/Boton"; 
 import Titulo from "../Titulo/Titulo";
-import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
 
 const Detalle = ({ personaje }) => {
-  const { t } = useTranslation();
 
   if (!personaje) {
     return (
       <Titulo 
-        texto={t("noCharacterData")}
+        texto="No se han recibido datos del personaje."
         clase="text-xl text-center"
       />
     );
@@ -73,28 +71,28 @@ const Detalle = ({ personaje }) => {
         <div className="md:w-1/2 flex flex-col justify-between text-left p-4 text-white backdrop-blur-md bg-black/70 rounded">
           <div className="space-y-4 md:space-y-6 drop-shadow-lg">
             <p className="text-2xl md:text-3xl font-black">
-              <span className="underline text-red-600">{t("name")}:</span>
+              <span className="underline text-red-600">Nombre:</span>
               <span className="ml-2 font-black">{personaje.nombre}</span>
             </p>
             <p className="text-lg md:text-xl font-black">
-              <span className="underline text-red-600">{t("alias")}:</span>
+              <span className="underline text-red-600">Alias:</span>
               <span className="ml-2 font-black">{personaje.alias}</span>
             </p>
             <p className="text-lg md:text-xl font-black">
-              <span className="underline text-red-600">{t("abilities")}:</span>
+              <span className="underline text-red-600">Habilidades:</span>
               <span className="ml-2 font-black">{personaje.habilidades}</span>
             </p>
             <p className="text-lg md:text-xl font-black">
-              <span className="underline text-red-600">{t("description")}:</span>
+              <span className="underline text-red-600">Descripcion:</span>
               <span className="ml-2 font-black">{personaje.descripcion}</span>
             </p>
             <p className="text-lg md:text-xl font-black">
-              <span className="underline text-red-600">{t("type")}:</span>
-              <span className="ml-2 font-black">{t(personaje.heroe ? "heroe" : "villain")}</span>
+              <span className="underline text-red-600">Tipo:</span>
+              <span className="ml-2 font-black">{personaje.heroe ? "Héroe" : "Villano"}</span>
             </p>
           </div>
           <Boton 
-            text={ esFavorito ? t("removeFromFavorites") : t("addToFavorites") }
+            text={ esFavorito ? "Eliminar de Favoritos" : "Añadir a Favoritos" }
             onClick={ esFavorito ? eliminarDeFavoritos : agregarAFavoritos }
             clase="mt-6 bg-red-600 hover:bg-red-800 text-white px-6 py-3 rounded self-start"
           />

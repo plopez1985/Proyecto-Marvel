@@ -1,19 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; 
-import { useTranslation } from "react-i18next";
 import { ROUTES } from '../../const/routes';
 
 export default function Home() {
   const [hovered, setHovered] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const navigate = useNavigate();
-
-  const { t, i18n } = useTranslation();
-  useEffect(() => {
-    // Leer el idioma guardado en el localStorage (por defecto español)
-    const idiomaUsuario = localStorage.getItem("idioma") || "es";
-    i18n.changeLanguage(idiomaUsuario);
-  }, [i18n]);
   
   // Hook para detectar el tamaño de pantalla
   useEffect(() => {
@@ -42,7 +34,7 @@ export default function Home() {
         >
           <div className="absolute top-0 right-0 bg-red-700/80 px-10 py-3 rounded-lg shadow-lg w-full">
             <h2 className="text-white text-6xl text-center font-bold">
-              {t("heroes")}
+              Héroes
             </h2>
           </div>
         </div>
@@ -60,7 +52,7 @@ export default function Home() {
         >
           <div className="absolute top-0 right-0 bg-red-700/80 px-10 py-3 rounded-lg shadow-lg w-full">
             <h2 className="text-white text-6xl text-center font-bold">
-              {t("villains")}
+              Villanos
             </h2>
           </div>
         </div>

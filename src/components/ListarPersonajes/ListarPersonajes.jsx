@@ -2,11 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Boton from "../Boton/Boton"; 
 import { ROUTES } from "../../const/routes";
-import { useTranslation } from "react-i18next";
 
 const ListarPersonajes = ({ personajes, centrado = false }) => {
-
-  const { t } = useTranslation();
   
   // Si "centrado" es true, usamos grid con una sola columna y centrado, de lo contrario el grid original
   const clasesGrid = centrado  //el centrado es para cuando se busca un personaje..en el listado de personajes no se usa (me complique la vida xD)
@@ -33,7 +30,7 @@ const ListarPersonajes = ({ personajes, centrado = false }) => {
           <h2 className="text-xl font-bold mb-2 text-white">{personaje.nombre}</h2>
           <Link to={`${ROUTES.Detalle.replace(":id", personaje.id)}`} state={{ personaje }}>
             <Boton 
-              text={t("details")}
+              text="Detalles"
               clase="bg-red-600 hover:bg-red-800 text-white px-4 py-2 rounded"
             />
           </Link>
